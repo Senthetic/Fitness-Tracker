@@ -1,17 +1,12 @@
  const router = require("express").Router();
  const Workout = require("../models");
 
-  router.get("/api/workouts/range", (req, res) => {
-   Workout.find({})
-     //.sort({ date: -1 })
-     .then(dbWorkout => {
-         console.log("Do you work out",dbWorkout);
-       res.json(dbWorkout);
+ module.exports = (app)=>{
+  app.get("/api/workouts", (req, res)=>{
+     db.Workout.find().then((results)=>{
+         res.json(results);
      })
-     .catch(err => {
-       res.status(400).json(err);
-     });
- });
+  })
 
 router.post("/api/transaction", ({ body }, res) => {
   Transaction.create(body)
